@@ -58,7 +58,7 @@ class Queue:
             return
         raise IndexError('queue index out of range')
 
-    def __repr__(self) -> list:
+    def __repr__(self) -> str:
         output = ''
         pointer = self.first
         while (pointer):
