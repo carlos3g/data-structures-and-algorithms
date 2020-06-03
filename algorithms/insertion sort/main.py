@@ -1,4 +1,4 @@
-def insertion(array): 
+def insertion(array: list) -> list: 
     for i in range(1, len(array)): 
         chave = array[i]
         j = i-1
