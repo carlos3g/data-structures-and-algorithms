@@ -64,7 +64,7 @@ class LinkedList:
     def __len__(self) -> int:
         return self._size
 
-    def __getitem__(self, index: int) -> [Node, None]:
+    def __getitem__(self, index: int) -> None:
         pointer = self._getnode(index)
         if (pointer):
             return pointer

@@ -7,12 +7,12 @@ class Stack:
     def push(self, data: Any) -> None:
         self.stack.append(data)
 
-    def pop(self) -> [None, Any]:
+    def pop(self) -> Any:
         if (self.stack):
             return self.stack.pop()
         return None
 
-    def peek(self) -> [None, Any]:
+    def peek(self) -> Any:
         if (self.stack):
             return self.stack[-1]
         return None
