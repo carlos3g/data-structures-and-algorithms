@@ -6,6 +6,15 @@ class LinkedList:
         self.head = None
         self._size = 0
 
+    def _getnode(self, index: int) -> Node:
+        pointer = self.head
+        for _ in range(index):
+            if (pointer):
+                pointer = pointer.next
+            else:
+                raise IndexError('list index out of range')
+        return pointer
+
     def append(self, data: Any) -> None:
         if (self.head):
             pointer = self.head
@@ -22,35 +31,31 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
         else:
-            pointer = self.head
-            for _ in range(index-1):
-                if (pointer):
-                    pointer = pointer.next
-                else:
-                    raise IndexError('list index out of range')
+            pointer = self._getnode(index-1)
             new_node.next = pointer.next
             pointer.next = new_node
         self._size -= 1
 
-    def pop(self, index: int) -> Node:
-        if (index == 0):
+    def pop(self, index: int) -> None:
+        if (self.head == None):
+            raise IndexError('pop from empty list')
+        elif (index == 0):
             self.head = self.head.next
         else:
             pointer = self.head
-            for _ in range(index-1):
-                if (pointer):
-                    pointer = pointer.next
-                else:
-                    raise IndexError('list index out of range')
-            if (pointer):
-                pointer.next = pointer.next.next
+            previous = pointer.next
+            for _ in range(index):
+                previous = pointer
+                pointer = pointer.next
+            previous.next = pointer.next
+            pointer.next = None
         self._size -= 1
 
     def index(self, data: Any) -> int:
         pointer = self.head
         i = 0
         while (pointer):
-            if (pointer == data):
+            if (str(pointer) == str(data)):
                 return i
             pointer = pointer.next
             i += 1
@@ -60,29 +65,25 @@ class LinkedList:
         return self._size
 
     def __getitem__(self, index: int) -> [Node, None]:
-        pointer = self.head
-        for _ in range(index):
-            if (pointer):
-                pointer = pointer.next
-            else:
-                raise IndexError('list index out of range')
+        pointer = self._getnode(index)
         if (pointer):
             return pointer
         raise IndexError('list index out of range')
 
-    def __setitem__(self, index, data) -> None:
-        pointer = self.head
-        for _ in range(index):
-            if (pointer):
-                pointer = pointer.next
-            else:
-                raise IndexError('list index out of range')
+    def __setitem__(self, index: int, data: Any) -> None:
+        pointer = self._getnode(index)
         if (pointer):
             pointer.data = data
+            return
         raise IndexError('list index out of range')
 
-    # def __repr__(self) -> str:
-    #     pass
+    def __repr__(self) -> str:
+        output = ''
+        pointer = self.head
+        while (pointer):
+            output += '{} -> '.format(pointer)
+            pointer = pointer.next
+        return output
 
-    # def __str__(self) -> str:
-    #     return self.__repr__()
+    def __str__(self) -> str:
+        return self.__repr__()
