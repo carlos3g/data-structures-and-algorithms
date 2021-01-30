@@ -1,5 +1,5 @@
 def binary_search(array: list, target: int) -> [int, None]:
-    min_ = array[0]
+    min_ = 0
     max_ = len(array)-1
     while (min_ <= max_):
         guess = min_ + ((max_ - min_) // 2)
