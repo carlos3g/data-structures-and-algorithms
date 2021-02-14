@@ -2,15 +2,17 @@
 
 Aqui você encontrará implementações de alguns algoritmos e estrutura de dados
 
----
-| Algoritmos                          | Python |
+## 📖 Conteúdo
+### Algoritmos
+| Nome                          | Python |
 |-------------------------------------|--------|
 | Binary Search | [Python](./algorithms/binary%20search) |
 | First Duplicate | [Python](./algorithms/first%20duplicate) |
 | Insertion Sort | [Python](./algorithms/insertion%20sort) |
 | Kadane's Algorithm | [Python](./algorithms/kadane's%20algorithm) |
 
-| Estrutura de Dados                          | Python |
+### Estruturas de dados
+| Nome                          | Python |
 |-------------------------------------|--------|
 | Fila | [Python](./data%20structures/fila) |
 | Pilha | [Python](./data%20structures/pilha) |
